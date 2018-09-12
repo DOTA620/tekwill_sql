@@ -1,0 +1,4 @@
+12.09.2018
+-- am instalat GitExtension de pe http://gitextensions.github.io/
+
+-- am instalat GitBash de pe https://git-scm.com/download/win
