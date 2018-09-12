@@ -2,3 +2,6 @@
 -- am instalat GitExtension de pe http://gitextensions.github.io/
 
 -- am instalat GitBash de pe https://git-scm.com/download/win
+
+
+-- am facut primul commit
