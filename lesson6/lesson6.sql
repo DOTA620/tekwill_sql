@@ -1,11 +1,10 @@
+-- 26.09.18
 --1 Exercitii
 Select first_name, last_name , salary*12 from employees;
 --2
 select first_name || q'['s last name is ]' || last_name "FullName" from employees;
 --3
 select DISTINCT exam_type from ad_exam_details;
-
-
 -- Lectia6
 
 select employee_id, last_name, job_id, department_id From employees where department_id = 90;
@@ -49,6 +48,74 @@ select * from employees where salary >=3000 AND  DEPARTMENT_ID = 90;
 select * from employees where salary >=10000 AND job_id LIKE '%MAN%';
 -- OR
 select * from employees where salary >= 17000 OR  DEPARTMENT_ID = 90;
+
+
+
+
+
+-- 28.09.19
+-- OR/AND toghether
+select last_name
+, department_id
+, salary
+from employees
+where department_id = 60 -- department_id is choosing between 60 or 80
+or department_id = 80 and salary > 10000; --these 2 are toghether
+
+-- to apply AND condition for both OR
+select last_name
+, department_id
+, salary
+from employees
+where (department_id = 60 -- department_id is choosing between 60 or 80
+or department_id = 80) and salary > 10000; --these 2 are toghether
+
+
+select * from employees where job_id= 'SA_REP' OR job_id = 'SA_MAN' and phone_number like '5%';
+
+select * from employees where (job_id= 'SA_REP' OR job_id = 'SA_MAN') and phone_number like '5%';
+
+-- Order by
+select * from employees
+where job_id= 'SA_REP' OR job_id = 'SA_MAN' 
+and phone_number like '0%'
+ORDER BY salary;
+
+
+select * from employees
+where job_id= 'SA_REP' OR job_id = 'SA_MAN' 
+and phone_number like '0%'
+ORDER BY salary DESC;
+
+-- alias  can be  used  in order by
+select last_name || first_name FullName
+from employees
+ORDER BY FullName;
+
+select last_name || first_name FullName
+,salary 
+from employees
+ORDER BY 1 ,2;
+
+select last_name || first_name FullName
+,salary 
+from employees
+ORDER BY 1 desc ,2 asc;
+
+-- fetch , offset
+select * from employees
+order by employee_id
+fetch first 10 rows only;
+
+-- last 10 rows
+select * from employees
+order by employee_id desc
+fetch first 10 rows only;
+
+
+-- substitution
+select * from employees where employee_id = &employee_id;
+
 
 
 
