@@ -115,7 +115,38 @@ fetch first 10 rows only;
 
 -- substitution
 select * from employees where employee_id = &employee_id;
+-- 01.10.2018
+-- string
+select * from employees where first_name = '&name_var';
+-- showing a column
+select first_name,email, salary, hire_date, &hide_column from employees
+ where first_name = '&var_name';
 
+-- 3 variables
+select first_name, last_name, &hide_column
+from employees
+where hire_date = '&date_var' -- 03-JAN-14
+Order By &hide_column_2;
+
+
+-- remember the subtitution value
+select employee_id, last_name, job_id, &&column_name
+from employees
+order by &column_name;
+-- delete the remembered value
+undefine column_name;
+
+-- define a variable
+DEFINE salary_num = 17000
+select employee_id, last_name, job_id, salary
+from employees
+where salary = &salary_num;
+
+-- set verify on
+SET VERIFY ON
+select employee_id, last_name, job_id, salary
+from employees
+where salary = &salary_num;
 
 
 
