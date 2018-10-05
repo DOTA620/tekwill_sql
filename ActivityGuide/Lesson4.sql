@@ -38,8 +38,21 @@ where last_name like UPPER('&start_letter%')
 Order by last_name;
 
 --6
-SELECT 
+SELECT last_name, ROUND (months_between (SYSDATE, hire_date)) months_worked
+from employees
+order by months_worked;
+-- 7
+SELECT last_name
+, LPAD (salary, 15,'$') AS Salary
+FROM employees;
+--8
+SELECT last_name, salary
+, RPAD (' ',salary/1000,'*') AS Salary_2
+,length(RPAD (' ',salary/1000,'*')) AS Length
+FROM employees;
 
-
-
-select * from employees;
+--9
+SELECT last_name, trunc ((SYSDATE - hire_date)/7) AS TENURE
+FROM employees
+WHERE department_id = 90
+Order by TENURE desc;
